@@ -9,9 +9,7 @@ end
 def determine_triplet(a, b=nil)
 	b = a if b.nil?
 	c = pythagorean_triple(a, b)
-	return -1 if (b >= 1000)
 	return -1 if ((not c.nil?) && (a + b + c > 1000))
-	puts "#{a} + #{b} + #{c}"
  	return a * b * c if ((not c.nil?) && (a + b + c == 1000))
 	determine_triplet(a, (b + 1))
 end
