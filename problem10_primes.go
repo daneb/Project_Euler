@@ -1,32 +1,32 @@
+// No Performant 0(n)
 package main
 
 import "fmt"
 
-func main() {
+func is_prime(value int, x int) int {
+	var prime = -1
 
-  var limit = 2000000
-  var primes := make([]int, 0, 1000000)
-  var prime_counter = 0;
+	if x == 1 {
+		prime = 0
+	} else if value%x == 0 {
+		prime = 1
+	} else {
+		prime = is_prime(value, x-1)
+	}
 
-  for i := 2; i <= limit; i++ { 
-      if is_prime(i, i - 1) 
-      {
-        primes[prime_counter] = i
-        prime_counter++
-      }
-  }
-
-  fmt.Println("Found smallest:", smallest) 
-
+	return prime
 }
 
-func is_prime(var value, var x)
-{
-  if x == 1 {
-    return true
-  }
-  else if(((value % 2 == 0) | (value % x == 0)) && (x != 1)) {
-    return false
-  }
-  is_prime(value, x - 1)
+func main() {
+	var limit = 2000000
+	var prime_counter = 2
+
+	for i := 3; i <= limit; i = i + 2 {
+		if is_prime(i, i-1) == 0 {
+			fmt.Println(i)
+			prime_counter = prime_counter + i
+		}
+	}
+
+	fmt.Println(prime_counter)
 }
